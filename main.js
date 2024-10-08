@@ -203,3 +203,66 @@ for (let i = 0; i < menuItems.length; i++) {
   };
 }
 
+const tabsContainer_header = document.createElement("div");
+tabsContainer_header.classList.add("tabs_header");
+
+const tabNames_header = [
+  "Описание",
+  "Характеристика",
+  "Отзывы",
+  "Доставка",
+  " ",
+  " ",
+  " ",
+  " ",
+  " ",
+];
+
+const reusableContent_header =
+  "Легкий удобный <strong>нож с клинком</strong>, имеющим пологие вогнутые линзовидные спуски на <strong>две трети ширины клинка</strong>, образующие тонкое, " +
+  "прекрасно режущее лезвие толщиной около <strong>0,6 мм</strong> в районе подводов. <br><br>" +
+  "<strong>Обух клинка со спинкой рукояти</strong> имеет одну плавную дугообразную линию. На пяте перед рукоятью есть подпальцевый <strong>вырез для точных работ</strong>. <br><br>" +
+  "Необходимо проявлять некоторую осторожность при работе с большими боковыми нагрузками <strong>на лезвие ножа</strong>, ввиду небольшой толщины клинка " +
+  "в рабочей части.<br><br>" +
+  "Монтаж рукояти накладной <strong>плашечный.</strong> На навершии рукояти, функцию которого выполняет выступающий из под плашек хвостовик, " +
+  "имеется <strong>отверстие под темляк</strong>. Этот нож удобный помощник при работе <strong>с продуктами и охоте на боровую и водоплавающую дичь.</strong>";
+
+const contentContainer_header = document.createElement("div");
+contentContainer_header.classList.add("content_container_header");
+
+tabNames_header.forEach((name_header, index_header) => {
+  const tab_header = document.createElement("div");
+  tab_header.classList.add("tab_header");
+  tab_header.textContent = name_header;
+  tab_header.onclick = (event_header) =>
+    changeTab_header(event_header, `content-${index_header}`);
+  if (index_header === 0) tab_header.classList.add("active_header");
+  tabsContainer_header.appendChild(tab_header);
+});
+
+contentContainer_header.appendChild(tabsContainer_header);
+
+tabNames_header.forEach((_, index_header) => {
+  const contentDiv_header = document.createElement("div");
+  contentDiv_header.classList.add("tab-content_header");
+  contentDiv_header.id = `content-${index_header}`;
+  contentDiv_header.style.display = index_header === 0 ? "block" : "none";
+  contentDiv_header.innerHTML = `${reusableContent_header}`;
+  contentContainer_header.appendChild(contentDiv_header);
+});
+
+document.body.appendChild(contentContainer_header);
+
+function changeTab_header(evt_header, tabName_header) {
+  const tabContents_header =
+    document.getElementsByClassName("tab-content_header");
+  const tabs_header = document.getElementsByClassName("tab_header");
+
+  for (let i = 0; i < tabs_header.length; i++) {
+    tabs_header[i].classList.remove("active_header");
+    tabContents_header[i].style.display = "none";
+  }
+
+  evt_header.currentTarget.classList.add("active_header");
+  document.getElementById(tabName_header).style.display = "block";
+}

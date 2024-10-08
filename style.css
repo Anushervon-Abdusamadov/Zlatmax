@@ -120,3 +120,44 @@ input[type="text"]::placeholder {
 .button_header:hover {
   background-color: #d48900;
 }
+
+.content_container_header {
+  box-shadow: 0px 4px 20px 0px #0000001a;
+  margin: 120px 80px;
+  padding: 30px;
+}
+
+.tabs_header {
+  display: flex;
+  border-bottom: 1px solid #14141426;
+  justify-content: space-between;
+}
+
+.tab_header {
+  padding: 0px 0px 20px 0px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24.38px;
+  text-align: left;
+  color: #14141480;
+}
+
+.tab_header.active_header {
+  border-bottom: 2px solid #e8aa31;
+  color: #141414;
+  font-weight: 700;
+}
+
+.tab-content_header {
+  font-size: 18px;
+  color: #141414;
+  font-weight: normal;
+  text-align: left;
+  line-height: 27px;
+  padding: 30px 128px 0px 0px;
+}
+
+.tab-content_header strong {
+  font-weight: 500;
+}
